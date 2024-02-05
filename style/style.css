@@ -1,0 +1,40 @@
+body {
+    margin: 0;
+    background-color: rgb(57, 117, 57);
+    text-align: center;
+}
+
+#start-screen {
+    padding: 20px 20px;
+    align-content: center;
+    justify-content: center;
+    align-items: center;
+    height: 900;
+    width: 900;
+
+    
+}
+
+#game-container {
+    display: none;
+    flex-direction: column;
+    width: 100vw;
+    padding: 10px 1px;
+    justify-content: center;
+    align-items: center;
+}
+
+#game-box {
+    display: none;
+    align-content: center;
+    padding: 10px 10px;
+    overflow: hidden;
+    position: relative;
+    background-color: beige;
+    height: 700px;
+    width: 700px;
+}
+
+#gameover-screen {
+    display: none;
+}
