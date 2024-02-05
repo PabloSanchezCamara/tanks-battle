@@ -1,6 +1,6 @@
 body {
     margin: 0;
-    background-color: rgb(57, 117, 57);
+    background-color: rgb(121, 94, 25);
     text-align: center;
 }
 
@@ -27,12 +27,10 @@ body {
 #game-box {
     display: none;
     align-content: center;
-    padding: 10px 10px;
     overflow: hidden;
     position: relative;
-    background-color: beige;
-    height: 700px;
-    width: 700px;
+    background-image: url(../images/grass03.png);
+    background-size: cover;
 }
 
 #gameover-screen {

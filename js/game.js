@@ -7,9 +7,9 @@ class Game {
         this.gameBoxNode = document.querySelector("#game-box");
         this.gameoverScreenNode = document.querySelector("#gameover-screen");
 
-        this.player;
-        this.height = 900;
-        this.width = 1300;
+        this.tanque = new Tanque(this.gameBoxNode, 300, 300, 75, 75, "./images/Tank_0.png");
+        this.height = 700;
+        this.width = 700;
         this.enemies = [];
         this.kills = 0;
         this.lives = 3;
@@ -25,15 +25,24 @@ class Game {
     //metodos de juego
 
     start() {
-        this.gameContainerScreenNode.style.height = `${this.height}px`;
-        this.gameContainerScreenNode.style.width = `${this.width}px`
+        this.gameBoxNode.style.height = `${this.height}px`;
+        this.gameBoxNode.style.width = `${this.width}px`
         this.startScreenNode.style.display = "none";
         this.gameContainerScreenNode.style.display = "flex";
         this.gameBoxNode.style.display = "block";
 
         this.gameIntervalId = setInterval(() => {
             //console.log("probando intervalo")
-
+            this.gameLoop()
         },this.gameIntervalFreq)
+    }
+
+    gameLoop(){
+        //console.log("in the gameloop")
+        this.update();
+    }
+
+    update(){
+        this.tanque.move()
     }
 }
