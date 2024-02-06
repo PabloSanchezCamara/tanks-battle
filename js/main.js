@@ -1,4 +1,4 @@
-window.onload = function (){
+
 const startScreenNode = document.querySelector("#start-screen");
 const gameContainerScreenNode = document.querySelector("#game-container");
 const gameBoxNode = document.querySelector("#game-box");
@@ -18,6 +18,10 @@ function startGame (){
     gameObj.start();
 }
 
+function restartGame() {
+    location.reload();
+  }
+
 function handleKeyDown(event){
     //console.log("Tecla presionada:", event.key)
     const key = event.key;
@@ -33,6 +37,10 @@ function handleKeyDown(event){
     if (key === "ArrowDown"){
         gameObj.tanque.directionY = 1;
     }
+    if (key === "f"){
+        // gameObj.disparos.directionX = -1;
+        gameObj.createNewShoot()
+     }
 }
 window.addEventListener("keydown", handleKeyDown);
 
@@ -44,11 +52,19 @@ function handleKeyUp(event){
     if (key === "ArrowUp" || key === "ArrowDown"){
         gameObj.tanque.directionY = 0;
     }
+    
 }
 window.addEventListener("keyup", handleKeyUp);
 
-//Event listeners
 
-startBtnNode.addEventListener("click", startGame)
 
-}
+startBtnNode.addEventListener("click", startGame);
+
+restartBtnNode.addEventListener("click", function () {
+   
+    restartGame();
+  });
+
+
+
+

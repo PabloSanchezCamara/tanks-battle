@@ -1,7 +1,7 @@
 class Tanque {
     constructor (gameScreen, left, top, width, height, imgSrc){
         this.gameScreen = gameScreen;
-        this.left = left;
+        this.left = left; //canbiar por x y
         this.top = top;
         this.width = width;
         this.height = height;
@@ -44,20 +44,19 @@ class Tanque {
         this.elementTank.style.top = `${this.top}px`
         }
 
-        didCollide(enemy) {
-            const tanqueRect = this.elementTank.getBoundingClientRect();
-            const enemyRect = enemy.elementEnemy.getBoundingClientRect();
+    didCollide(enemy) {
+        const tanqueRect = this.elementTank.getBoundingClientRect();
+        const enemyRect = enemy.elementEnemy.getBoundingClientRect();
         
-            if (
-              tanqueRect.left < enemyRect.right &&
-              tanqueRect.right > enemyRect.left &&
-              tanqueRect.top < enemyRect.bottom &&
-              tanqueRect.bottom > enemyRect.top
-            ) {
-              //console.log("Crash!");
-              return true;
-            } else {
-              return false;
-            }
-          }
+        if (
+            tanqueRect.left < enemyRect.right &&
+            tanqueRect.right > enemyRect.left &&
+            tanqueRect.top < enemyRect.bottom &&
+            tanqueRect.bottom > enemyRect.top
+        ) {
+            return true;
+        } else {
+            return false;
+        }
+    }
 }

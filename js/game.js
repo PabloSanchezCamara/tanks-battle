@@ -10,12 +10,13 @@ class Game {
         this.tanque = new Tanque(this.gameBoxNode, 300, 300, 75, 75, "./images/Tank_0.png");
         this.height = 600;
         this.width = 700;
-        this.enemies = [];
+        this.enemies = []; //poner Arr
         this.enemiesAppearFreq = 2000;
         this.kills = 0;
         this.lives = 3;
         this.gameIsOver = false;
         this.gameIntervalId;
+        this.disparos = [] //poner Arr
 
         this.gameIntervalFreq = Math.round(1000/60)
 
@@ -39,7 +40,7 @@ class Game {
     }
 
     gameLoop(){
-        //console.log("in the gameloop")
+        
         this.update();
 
         if(this.gameIsOver){
@@ -49,29 +50,13 @@ class Game {
 
     update(){
         this.tanque.move()
-
-       /*this.enemyAppearIntervalId = setInterval(() => {
-
-            let positionAppear = Math.random() * (-120) 
-
-            let newEnemyTop = new Enemy ("arriba", positionAppear);
-            this.enemies.push(newEnemyTop);
-            
-
-            let newEnemyBottom = new Obstaculo("abajo", positionAppear);
-            this.enemies.push(newEnemyBottom);
-            //debemos tomar en cuenta elementps que salgan del juego y borrarlos
-
-        }, this.enemiesAppearFreq)*/
         
-
+        //enemigos aparecen
         if (Math.random() > 0.98 && this.enemies.length < 6) {
             this.enemies.push(new Enemy(this.gameBoxNode));
         }
-         for (let i = 0; i < this.enemies.length; i++){
-            this.enemies[i].move();
-         }
-
+         
+        //enemigos eliminados
         for (let i=0; i < this.enemies.length; i++){
             const enemy = this.enemies[i];
             enemy.move();
@@ -90,13 +75,25 @@ class Game {
             }
         }
 
+       
+
+        
+
+        //gameover 
         if (this.lives === 0) {
             this.endGame();
         }
         
     }
 
-   endGame(){
+
+    //disparos aparecen
+    createNewShoot (){
+        const disparoObj = new Disparo(this.tanque);
+        this.disparos.push(disparoObj);
+    }
+
+    endGame(){
     this.tanque.elementTank.remove();
     this.enemies.forEach( function (enemy){
         enemy.elementEnemy.remove();
