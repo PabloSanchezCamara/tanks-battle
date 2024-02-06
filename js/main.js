@@ -21,29 +21,17 @@ function startGame (){
 function handleKeyDown(event){
     //console.log("Tecla presionada:", event.key)
     const key = event.key;
-    const possibleKeyStrokes = [
-        "ArrowLeft",
-        "ArrowUp",
-        "ArrowRight",
-        "ArrowDown",
-    ]
-    if (possibleKeyStrokes.includes(key)){
-        event.preventDefault();
-
-        switch (key){
-            case "ArrowLeft":
-                gameObj.tanque.directionX = -1;
-                break;
-            case "ArrowUp":
-                gameObj.tanque.directionY = -1;
-                break;
-            case "ArrowRight":
-                gameObj.tanque.directionX = 1;
-                break;
-            case "ArrowDown":
-                gameObj.tanque.directionY = 1;
-                break;
-        }
+    if (key === "ArrowLeft"){
+        gameObj.tanque.directionX = -1;
+    }
+    if (key === "ArrowRight"){
+        gameObj.tanque.directionX = 1;
+    }
+    if (key === "ArrowUp"){
+        gameObj.tanque.directionY = -1;
+    }
+    if (key === "ArrowDown"){
+        gameObj.tanque.directionY = 1;
     }
 }
 window.addEventListener("keydown", handleKeyDown);

@@ -8,15 +8,15 @@ class Tanque {
         this.directionX = 0;
         this.directionY = 0;
 
-        this.element = document.querySelector("img");
-        this.element.src = imgSrc;
+        this.elementTank = document.querySelector("img");
+        this.elementTank.src = imgSrc;
 
-        this.element.style.position = "absolute";
-        this.element.style.width = `${width}px`;
-        this.element.style.height = `${height}px`;
-        this.element.style.top = `${top}px`;
-        this.element.style.left = `${left}px`;
-        this.gameScreen.appendChild(this.element);
+        this.elementTank.style.position = "absolute";
+        this.elementTank.style.width = `${width}px`;
+        this.elementTank.style.height = `${height}px`;
+        this.elementTank.style.top = `${top}px`;
+        this.elementTank.style.left = `${left}px`;
+        this.gameScreen.appendChild(this.elementTank);
 
     }
 
@@ -40,7 +40,24 @@ class Tanque {
     }
 
     updatePosition(){
-        this.element.style.left = `${this.left}px`;
-        this.element.style.top = `${this.top}px`
+        this.elementTank.style.left = `${this.left}px`;
+        this.elementTank.style.top = `${this.top}px`
         }
+
+        didCollide(enemy) {
+            const tanqueRect = this.elementTank.getBoundingClientRect();
+            const enemyRect = enemy.elementEnemy.getBoundingClientRect();
+        
+            if (
+              tanqueRect.left < enemyRect.right &&
+              tanqueRect.right > enemyRect.left &&
+              tanqueRect.top < enemyRect.bottom &&
+              tanqueRect.bottom > enemyRect.top
+            ) {
+              //console.log("Crash!");
+              return true;
+            } else {
+              return false;
+            }
+          }
 }
