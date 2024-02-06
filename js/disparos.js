@@ -27,7 +27,23 @@ class Disparo {
         }
     
     move(){
-        this.y += this.speed;
+        this.y -= this.speed;
         this.updatePosition()
+    }
+
+    didCollide(enemy) {
+        const shootRect = this.elementShoot.getBoundingClientRect();
+        const enemyRect = enemy.elementEnemy.getBoundingClientRect();
+        
+        if (
+            shootRect.left < enemyRect.right &&
+            shootRect.right > enemyRect.left &&
+            shootRect.top < enemyRect.bottom &&
+            shootRect.bottom > enemyRect.top
+        ) {
+            return true;
+        } else {
+            return false;
+        }
     }
 }

@@ -74,10 +74,24 @@ class Game {
                 i--;
             }
         }
-
-       
-
         
+        
+        
+        for (let i = 0; i < this.disparos.length; i++) {
+            const disparo = this.disparos[i];
+            disparo.move();
+            for (let j=0; j<this.enemies.length; j++){
+                const enemy = this.enemies[j];
+            
+
+            if (disparo.didCollide(enemy)){
+                enemy.elementEnemy.remove();
+                disparo.elementShoot.remove();
+                this.enemies.splice(i, 1);
+                i--;
+            }}
+        }
+
 
         //gameover 
         if (this.lives === 0) {
