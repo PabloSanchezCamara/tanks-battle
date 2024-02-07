@@ -66,6 +66,7 @@ class Game {
                 this.enemies.splice(i, 1);
                 this.lives--;
                 i--;
+                //this.updateLivesCounter(); MIRAR
             } 
             
             else if (enemy.top > this.height){
@@ -89,6 +90,7 @@ class Game {
                 disparo.elementShoot.remove();
                 this.enemies.splice(i, 1);
                 i--;
+               // this.updateKillsCounter();
             }}
         }
 
@@ -105,6 +107,16 @@ class Game {
     createNewShoot (){
         const disparoObj = new Disparo(this.tanque);
         this.disparos.push(disparoObj);
+    }
+
+    updateKillsCounter() {
+        const killsCounterElement = document.querySelector("#kills-counter");
+        killsCounterElement.textContent = `Kills: ${this.kills}`;
+    }
+    
+      updateLivesCounter() {
+        const livesCounterElement = document.querySelector("#lives-counter");
+        livesCounterElement.textContent = `Lives: ${this.lives}`;
     }
 
     endGame(){

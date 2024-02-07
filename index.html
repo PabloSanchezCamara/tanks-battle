@@ -13,19 +13,23 @@
         <img src="./images/logo.jpeg" alt="" class="logo-img" />
         <br />
         <h1 id="title">Welcome <br> SOLDIER!</h1>
-        <div id="instructions-panel"><p>
-            <h3>Instructions</h3>
-        <br />
-        <h4>Use the arrow keys to move your tank</h4>
-        </p></div> 
+        <div id="instructions-panel">
+        <span id="instructions-line">Instructions</span>
+        <br>
+        Use the Arrow Keys to move your tank
+        <br>
+        Press Space to shoot
+        <br>
+        <img src="./images/space-arrows.png" alt="" class="instructions-img" />
+        </div> 
         <button id="start-btn">Start the war!</button>
     </div>
     <!-- GAME SCREEN -->
     <div id="game-container">
         <div>
             <h1>TANKS BATTLE</h1>
-            <p>Kills: <span id="kills">0</span></p>
-            <p>Lives: <span id="lives">3</span></p>
+            <p>Kills: <span id="kills-counter">0</span></p>
+            <p>Lives: <span id="lives-counter">3</span></p>
         </div>
         
         <div id="game-box"></div>

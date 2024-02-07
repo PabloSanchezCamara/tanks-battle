@@ -37,7 +37,7 @@ function handleKeyDown(event){
     if (key === "ArrowDown"){
         gameObj.tanque.directionY = 1;
     }
-    if (key === "f"){
+    if (key === " "){
         // gameObj.disparos.directionX = -1;
         gameObj.createNewShoot()
      }
