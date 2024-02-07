@@ -17,6 +17,7 @@ class Game {
         this.gameIsOver = false;
         this.gameIntervalId;
         this.disparos = [] //poner Arr
+        
 
         this.gameIntervalFreq = Math.round(1000/60)
 
@@ -41,6 +42,8 @@ class Game {
     gameLoop(){
         
         this.update();
+        //console.log(this.enemies.length)
+        
 
         if(this.gameIsOver){
             clearInterval(this.gameIntervalId);
@@ -85,9 +88,9 @@ class Game {
                 //this.updateLivesCounter(); MIRAR
             } 
             
-            else if (enemy.top > this.height){
+            else if (enemy.top > this.height || enemy.top < -200 || enemy.left > this.width || enemy.left < -200){
                 enemy.elementEnemy.remove();
-                this.disparos.splice (i, 1);
+                this.enemies.splice (i, 1);
                 i--;
             }
         }
@@ -104,14 +107,18 @@ class Game {
                     enemy.elementEnemy.remove();
                     disparo.elementShoot.remove();
                     this.enemies.splice(j, 1);
+                    this.disparos.splice(i, 1);
+                    i--;
                     j--;
+                } 
                // this.updateKillsCounter();
-                } // else if (disparo.y > this.height){
-                //     disparo.elementShoot.remove();
-                //     this.enemies.splice (i, 1);
-                //     i--;
-                // } Mirar para eleminar el disparo cuando salga de la pantalla
-        }
+                
+                else if (disparo.y > this.height /*|| disparo.y < -30 || disparo.x > this.width || disparo.x < -30*/){
+                    disparo.elementShoot.remove();
+                    this.disparos.splice(i, 1);
+                    i--;
+                } 
+            }
         }
 
 
@@ -125,16 +132,20 @@ class Game {
 
     //disparos aparecen
     createNewShoot (){
-        let disparoObj;
-        if (disparoObj = new Disparo(this.tanque, "arriba")){
-            this.disparos.push(disparoObj);
-        } else if (disparoObj = new Disparo(this.tanque, "abajo")){;
-            this.disparos.push(disparoObj);
-        }else if (disparoObj = new Disparo(this.tanque, "derecha")){;
-            this.disparos.push(disparoObj);
-        }else if (disparoObj = new Disparo(this.tanque, "izquierda")){;
-            this.disparos.push(disparoObj);
-        }
+        const disparoObj = new Disparo(this.tanque);
+        this.disparos.push(disparoObj);
+        //console.log(this.disparos.length)
+       //console.log(this.tanque)
+        // let disparoObj;
+        // if (disparoObj = new Disparo(this.tanque, "arriba")){
+        //     this.disparos.push(disparoObj);
+        // } else if (disparoObj = new Disparo(this.tanque, "abajo")){;
+        //     this.disparos.push(disparoObj);
+        // }else if (disparoObj = new Disparo(this.tanque, "derecha")){;
+        //     this.disparos.push(disparoObj);
+        // }else if (disparoObj = new Disparo(this.tanque, "izquierda")){;
+        //     this.disparos.push(disparoObj);
+        // }
     }
 
     updateKillsCounter() {

@@ -1,5 +1,5 @@
 class Disparo {
-    constructor (tanque, type){
+    constructor (tanque){
         
         this.x = tanque.left;
         this.y = tanque.top;
@@ -8,7 +8,7 @@ class Disparo {
         // this.directionY = 500;
         this.w = 30;
         this.h= 30;
-        this.type = type;
+        this.type = tanque.enfoque;
 
         if(this.type === "arriba"){
             this.directionX = 0;
@@ -67,7 +67,7 @@ class Disparo {
             this.x += this.speed;
             this.updatePosition();
         }
-        console.log(this.type)
+        
     }
 
     didCollide(enemy) {

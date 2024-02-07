@@ -6,10 +6,10 @@ class Enemy {
         this.type = type
 
         if (this.type === "arriba"){
-            this.left = Math.floor(Math.random()*700);
+            this.left = Math.floor(Math.random()*600);
             this.top = -100;
         }else if (this.type === "abajo"){
-            this.left = Math.floor(Math.random()*700);
+            this.left = Math.floor(Math.random()*600);
             this.top = 600;
         }else if (this.type === "derecha"){
             this.left = 700;

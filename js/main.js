@@ -29,19 +29,23 @@ function handleKeyDown(event){
     if (key === "ArrowLeft"){
         gameObj.tanque.directionX = -1;
         // aqui cambias el SRC de la imagen
-        gameObj.tanque.elementTank.src = "./images/Tank_0-left.png"
+        gameObj.tanque.elementTank.src = "./images/Tank_0-left.png";
+        gameObj.tanque.enfoque = "izquierda"
     }
     if (key === "ArrowRight"){
         gameObj.tanque.directionX = 1;
         gameObj.tanque.elementTank.src = "./images/Tank_0-right.png";
+        gameObj.tanque.enfoque = "derecha"
     }
     if (key === "ArrowUp"){
         gameObj.tanque.directionY = -1;
         gameObj.tanque.elementTank.src = "./images/Tank_0.png";
+        gameObj.tanque.enfoque = "arriba"
     }
     if (key === "ArrowDown"){
         gameObj.tanque.directionY = 1;
         gameObj.tanque.elementTank.src = "./images/Tank_0-bottom.png"
+        gameObj.tanque.enfoque = "abajo"
     }
     if (key === " "){
         // gameObj.disparos.directionX = -1;

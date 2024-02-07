@@ -7,6 +7,9 @@ class Tanque {
         this.height = height;
         this.directionX = 0;
         this.directionY = 0;
+        this.enfoque = "arriba";
+        
+      
 
         this.elementTank = document.querySelector("img");
         this.elementTank.src = imgSrc;
