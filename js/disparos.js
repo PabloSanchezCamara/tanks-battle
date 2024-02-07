@@ -1,16 +1,40 @@
 class Disparo {
-    constructor (tanque){
+    constructor (tanque, type){
         
         this.x = tanque.left;
         this.y = tanque.top;
         this.speed = 4;
-        this.directionX = 0;
-        this.directionY = 500;
+        // this.directionX = 0;
+        // this.directionY = 500;
         this.w = 30;
         this.h= 30;
+        this.type = type;
+
+        if(this.type === "arriba"){
+            this.directionX = 0;
+            this.directionY = -1;
+        }else if (this.type === "abajo"){
+            this.directionX = 0;
+            this.directionY = 1;
+        }else if (this.type === "izquierda"){
+            this.directionX = -1;
+            this.directionY = 0;
+        }else if (this.type === "derecha"){
+            this.directionX = 1;
+            this.directionY = 0;
+        }
         
 
         this.elementShoot = document.createElement("img");
+        if (this.type === "arriba"){
+            this.elementShoot.src = "./images/bullet.png";
+        }else if(this.type === "abajo"){
+            this.elementShoot.src = "./images/bullet-bottom.png";
+        }else if(this.type === "derecha"){
+            this.elementShoot.src = "./images/bullet.right.png";
+        }else if(this.type === "izquierda"){
+            this.elementShoot.src = "./images/bullet-left.png";
+        }
         this.elementShoot.src = "./images/bullet.png";
 
         this.elementShoot.style.position = "absolute";
@@ -27,8 +51,23 @@ class Disparo {
         }
     
     move(){
-        this.y -= this.speed;
-        this.updatePosition()
+        // this.top += this.speed;
+        //     this.updatePosition();
+
+        if (this.type === "arriba"){
+            this.y -= this.speed;
+            this.updatePosition();
+        }else if(this.type === "abajo"){
+            this.y += this.speed;
+            this.updatePosition();
+        }else if (this.type === "izquierda"){
+            this.x -= this.speed;
+            this.updatePosition();
+        }else if (this.type === "derecha"){
+            this.x += this.speed;
+            this.updatePosition();
+        }
+        console.log(this.type)
     }
 
     didCollide(enemy) {

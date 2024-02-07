@@ -20,7 +20,6 @@ class Game {
 
         this.gameIntervalFreq = Math.round(1000/60)
 
-        
         this.enemyAppearIntervalId;
     }
 
@@ -88,7 +87,7 @@ class Game {
             
             else if (enemy.top > this.height){
                 enemy.elementEnemy.remove();
-                this.enemies.splice (i, 1);
+                this.disparos.splice (i, 1);
                 i--;
             }
         }
@@ -100,15 +99,19 @@ class Game {
             disparo.move();
             for (let j=0; j<this.enemies.length; j++){
                 const enemy = this.enemies[j];
-            
-
-            if (disparo.didCollide(enemy)){
-                enemy.elementEnemy.remove();
-                disparo.elementShoot.remove();
-                this.enemies.splice(j, 1);
-                j--;
+                
+                if (disparo.didCollide(enemy)){
+                    enemy.elementEnemy.remove();
+                    disparo.elementShoot.remove();
+                    this.enemies.splice(j, 1);
+                    j--;
                // this.updateKillsCounter();
-            }}
+                } // else if (disparo.y > this.height){
+                //     disparo.elementShoot.remove();
+                //     this.enemies.splice (i, 1);
+                //     i--;
+                // } Mirar para eleminar el disparo cuando salga de la pantalla
+        }
         }
 
 
@@ -122,8 +125,16 @@ class Game {
 
     //disparos aparecen
     createNewShoot (){
-        const disparoObj = new Disparo(this.tanque);
-        this.disparos.push(disparoObj);
+        let disparoObj;
+        if (disparoObj = new Disparo(this.tanque, "arriba")){
+            this.disparos.push(disparoObj);
+        } else if (disparoObj = new Disparo(this.tanque, "abajo")){;
+            this.disparos.push(disparoObj);
+        }else if (disparoObj = new Disparo(this.tanque, "derecha")){;
+            this.disparos.push(disparoObj);
+        }else if (disparoObj = new Disparo(this.tanque, "izquierda")){;
+            this.disparos.push(disparoObj);
+        }
     }
 
     updateKillsCounter() {
@@ -131,7 +142,7 @@ class Game {
         killsCounterElement.textContent = `Kills: ${this.kills}`;
     }
     
-      updateLivesCounter() {
+    updateLivesCounter() {
         const livesCounterElement = document.querySelector("#lives-counter");
         livesCounterElement.textContent = `Lives: ${this.lives}`;
     }
