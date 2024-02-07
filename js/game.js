@@ -11,7 +11,7 @@ class Game {
         this.height = 600;
         this.width = 700;
         this.enemies = []; //poner Arr
-        this.enemiesAppearFreq = 2000;
+        this.enemiesAppearFreq = 7000;
         this.kills = 0;
         this.lives = 3;
         this.gameIsOver = false;
@@ -48,13 +48,30 @@ class Game {
         }
     }
 
+    enemiesAppear(){
+        this.enemyAppearIntervalId = setInterval(() => {
+
+        let newEnemyTop = new Enemy(this.gameBoxNode, "arriba");
+        this.enemies.push(newEnemyTop);
+
+        let newEnemyBottom = new Enemy(this.gameBoxNode, "abajo");
+        this.enemies.push(newEnemyBottom);
+
+        let newEnemyLeft = new Enemy(this.gameBoxNode, "izquierda");
+        this.enemies.push(newEnemyLeft);
+
+        let newEnemyRight = new Enemy(this.gameBoxNode, "derecha");
+        this.enemies.push(newEnemyRight);
+        }, this.enemiesAppearFreq);
+    }
     update(){
         this.tanque.move()
+
         
-        //enemigos aparecen
+       /* //enemigos aparecen
         if (Math.random() > 0.98 && this.enemies.length < 6) {
             this.enemies.push(new Enemy(this.gameBoxNode));
-        }
+        }*/
          
         //enemigos eliminados
         for (let i=0; i < this.enemies.length; i++){
@@ -88,8 +105,8 @@ class Game {
             if (disparo.didCollide(enemy)){
                 enemy.elementEnemy.remove();
                 disparo.elementShoot.remove();
-                this.enemies.splice(i, 1);
-                i--;
+                this.enemies.splice(j, 1);
+                j--;
                // this.updateKillsCounter();
             }}
         }

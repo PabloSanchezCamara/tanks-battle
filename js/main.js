@@ -16,6 +16,7 @@ function startGame (){
     gameObj = new Game;
 
     gameObj.start();
+    gameObj.enemiesAppear();
 }
 
 function restartGame() {
@@ -27,15 +28,20 @@ function handleKeyDown(event){
     const key = event.key;
     if (key === "ArrowLeft"){
         gameObj.tanque.directionX = -1;
+        // aqui cambias el SRC de la imagen
+        gameObj.tanque.elementTank.src = "./images/Tank_0-left.png"
     }
     if (key === "ArrowRight"){
         gameObj.tanque.directionX = 1;
+        gameObj.tanque.elementTank.src = "./images/Tank_0-right.png";
     }
     if (key === "ArrowUp"){
         gameObj.tanque.directionY = -1;
+        gameObj.tanque.elementTank.src = "./images/Tank_0.png";
     }
     if (key === "ArrowDown"){
         gameObj.tanque.directionY = 1;
+        gameObj.tanque.elementTank.src = "./images/Tank_0-bottom.png"
     }
     if (key === " "){
         // gameObj.disparos.directionX = -1;

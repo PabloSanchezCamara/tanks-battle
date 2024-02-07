@@ -1,6 +1,6 @@
 class Tanque {
-    constructor (gameScreen, left, top, width, height, imgSrc){
-        this.gameScreen = gameScreen;
+    constructor (gameBoxNode, left, top, width, height, imgSrc){
+        this.gameBoxNode = gameBoxNode;
         this.left = left; //canbiar por x y
         this.top = top;
         this.width = width;
@@ -10,31 +10,34 @@ class Tanque {
 
         this.elementTank = document.querySelector("img");
         this.elementTank.src = imgSrc;
+        this.elementTank.className = "";
 
         this.elementTank.style.position = "absolute";
         this.elementTank.style.width = `${width}px`;
         this.elementTank.style.height = `${height}px`;
         this.elementTank.style.top = `${top}px`;
         this.elementTank.style.left = `${left}px`;
-        this.gameScreen.appendChild(this.elementTank);
+        this.gameBoxNode.appendChild(this.elementTank);
 
     }
 
     move(){
-        this.left += this.directionX;
-        this.top += this.directionY;
+        //velocidad tanque
+        this.left += this.directionX * 1.5;
+        this.top += this.directionY * 1.5;
 
-        if (this.left < 10){
-            this.left = 10;
+        //bordes por los que no se sale el tanque
+        if (this.left < -15){
+            this.left = -15;
         }
-        if (this.top < 10){
-            this.top = 10;
+        if (this.top < -2){
+            this.top = -2;
         }
-        if (this.left > this.gameScreen.offsetWidth - this.width - 10) {
-            this.left = this.gameScreen.offsetWidth - this.width - 10;
+        if (this.left > this.gameBoxNode.offsetWidth - this.width + 15) {
+            this.left = this.gameBoxNode.offsetWidth - this.width + 15;
         }
-        if (this.top > this.gameScreen.offsetHeight - this.height - 10) {
-            this.top = this.gameScreen.offsetHeight - this.height - 10;
+        if (this.top > this.gameBoxNode.offsetHeight - this.height + 7) {
+            this.top = this.gameBoxNode.offsetHeight - this.height + 7;
         }
         this.updatePosition();
     }
