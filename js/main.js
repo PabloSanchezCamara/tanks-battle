@@ -5,14 +5,14 @@ const gameBoxNode = document.querySelector("#game-box");
 const gameoverScreenNode = document.querySelector("#gameover-screen");
 const startBtnNode = document.querySelector("#start-btn");
 const restartBtnNode = document.querySelector("#restart-btn");
+const mainThemeAudioNode = document.querySelector("#main-theme");
+mainThemeAudioNode.volume = 0.05;
 
 let gameObj;
 
 //State functions
 
 function startGame (){
-    //console.log("clickando")
-
     gameObj = new Game;
 
     gameObj.start();
@@ -71,8 +71,16 @@ startBtnNode.addEventListener("click", startGame);
 restartBtnNode.addEventListener("click", function () {
    
     restartGame();
-  });
+});
+const musicTheme = document.querySelector("#main-theme") ;
 
-
+const pauseMusic = document.querySelector("#pause-button");
+pauseMusic.addEventListener('click', () => {
+    musicTheme.pause();
+});
+const playMusic = document.querySelector("#play-button");
+playMusic.addEventListener('click', () => {
+    musicTheme.play();
+});
 
 

@@ -10,6 +10,9 @@
 <body>
     <!-- Start SCREEN -->
     <div id="start-screen">
+        <div id="reproductor-music"><button id="pause-button" class="music-buttons">🔇</button>
+        <button id="play-button" class="music-buttons">🔊</button>
+        </div>
         <img src="./images/IMG_5962.png" alt="" class="logo-img" />
         <br />
         <img src="./images/wlecome.jpeg" alt="" class="welcome-img" />
@@ -46,6 +49,9 @@
         
         <button id="restart-btn">Restart the war!</button>
     </div>
+
+    <audio id="main-theme" autoplay loop><source src="./sounds/Preparing for War.mp3" type="audio/mpeg"></audio>
+    <audio id="shoot-sound" src="./sounds/8bit_gunloop_explosion.wav"></audio>
 
     <script src="./js/main.js"></script>
     <script src="./js/game.js"></script>

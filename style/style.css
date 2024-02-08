@@ -52,14 +52,14 @@ body {
 }
 
 .logo-img {
-    width: 60vw;
-    height: 20vh;
+    width: 500px;
+    height: 180px;
     margin-left: 2vh;
 }
 
 .welcome-img {
-    width: 50vw;
-    height: 20vh;
+    width: 400px;
+    height: 180px;
     box-shadow: 0 0 20px rgb(43, 73, 85);
     border-radius: 10px;
     margin-bottom: 5vh;
@@ -120,7 +120,7 @@ body {
 
 #instructions-panel {
     background-color: beige;
-    height: 220px;
+    height: 240px;
     width: 400px;
     border-radius: 20px;
     opacity: 0.8;
@@ -129,8 +129,8 @@ body {
 }
 
 .instructions-img {
-    width: 20vh;
-    height: 17vh;
+    width: 170px;
+    height: 160px;
     margin-top: 15px;
     opacity: "none";
 }
@@ -149,12 +149,12 @@ body {
     border-radius: 20px;
     margin-top: 15px;
     margin-bottom: 10px;
-    margin-left: 10vw;
+    margin-left: 90px;
     box-shadow: 0 0 20px rgb(4, 6, 7);
 }
 
 #kills-counter{
-    margin-right: 10vw;
+    margin-right: 30px;
 }
 
 #final-score{
@@ -168,4 +168,23 @@ body {
     margin-bottom: 10px;
     box-shadow: 0 0 20px rgb(4, 6, 7);
     align-items: center;
+}
+
+.music-buttons{
+    background-color: #bec3a3;
+    height: 4vh;
+    width: 4vh;
+    border-radius: 40px;
+    margin-bottom: 10px;
+    box-shadow: 0 0 3px rgb(4, 6, 7);
+    font-size: large;
+}
+
+#reproductor-music{
+    background-color: #686968;
+    height: 4vh;
+    width: 10vh;
+    display: flow-root;
+    margin-left: 19px;
+    border-radius: 5px;
 }

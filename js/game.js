@@ -11,19 +11,22 @@ class Game {
         this.height = 600;
         this.width = 700;
         this.enemies = []; //poner Arr
-        this.enemiesAppearFreq = 7000;
+        this.enemiesAppearFreq = 1500;
         this.kills = 0;
         this.lives = 3;
         this.gameIsOver = false;
         this.gameIntervalId;
         this.disparos = [] //poner Arr
         this.enemySpeed = 0.9;
-        this.enemiesSpeedIncrease = 10000;
+        this.enemiesSpeedTimeIncrease = 1000;
         
 
         this.gameIntervalFreq = Math.round(1000/60)
 
         this.enemyAppearIntervalId;
+
+        this.disparoSound = document.querySelector("#shoot-sound");
+        this.disparoSound.volume = 0.05;
     }
 
     //metodos de juego
@@ -31,8 +34,8 @@ class Game {
     enemySpeedIncrease(){
          this.enemiesSpeedIncreaseId = setInterval(() => {
                 
-                this.enemySpeed += 0.2;
-                }, this.enemiesSpeedIncrease)
+                this.enemySpeed += 0.1;
+                }, this.enemiesSpeedTimeIncrease);
                 
             }
             
@@ -45,7 +48,6 @@ class Game {
         this.enemySpeedIncrease()
 
         this.gameIntervalId = setInterval(() => {
-            //console.log("probando intervalo")
             this.gameLoop()
         },this.gameIntervalFreq)
     }
@@ -61,18 +63,20 @@ class Game {
 
     enemiesAppear(){
         this.enemyAppearIntervalId = setInterval(() => {
+        const enemyTypes = ["arriba", "abajo", "izquierda", "derecha"];
+        let randomEnemyTypeIndex = Math.floor(Math.random()* enemyTypes.length)
 
-        let newEnemyTop = new Enemy(this.gameBoxNode, "arriba",this.enemySpeed);
+        let newEnemyTop = new Enemy(this.gameBoxNode, enemyTypes[randomEnemyTypeIndex],this.enemySpeed);
         this.enemies.push(newEnemyTop);
 
-        let newEnemyBottom = new Enemy(this.gameBoxNode, "abajo",this.enemySpeed);
-        this.enemies.push(newEnemyBottom);
+        // let newEnemyBottom = new Enemy(this.gameBoxNode, enemyTypes[1],this.enemySpeed);
+        // this.enemies.push(newEnemyBottom);
 
-        let newEnemyLeft = new Enemy(this.gameBoxNode, "izquierda",this.enemySpeed);
-        this.enemies.push(newEnemyLeft);
+        // let newEnemyLeft = new Enemy(this.gameBoxNode, enemyTypes[2],this.enemySpeed);
+        // this.enemies.push(newEnemyLeft);
 
-        let newEnemyRight = new Enemy(this.gameBoxNode, "derecha",this.enemySpeed);
-        this.enemies.push(newEnemyRight);
+        // let newEnemyRight = new Enemy(this.gameBoxNode, enemyTypes[3],this.enemySpeed);
+        // this.enemies.push(newEnemyRight);
         }, this.enemiesAppearFreq);
     }
     update(){
@@ -138,6 +142,7 @@ class Game {
     createNewShoot (){
         const disparoObj = new Disparo(this.tanque);
         this.disparos.push(disparoObj);
+        this.disparoSound.play();
     }
 
     //contadores

@@ -1,8 +1,8 @@
 class Disparo {
     constructor (tanque){
         
-        this.x = tanque.left;
-        this.y = tanque.top;
+        // this.x = tanque.left + 22;
+        // this.y = tanque.top - 8;
         this.speed = 4;
         this.w = 30;
         this.h = 30;
@@ -11,15 +11,23 @@ class Disparo {
         if(this.type === "arriba"){
             this.directionX = 0;
             this.directionY = -1;
+            this.x = tanque.left + 22;
+            this.y = tanque.top - 8;
         }else if (this.type === "abajo"){
             this.directionX = 0;
             this.directionY = 1;
+            this.x = tanque.left + 22;
+            this.y = tanque.top + 60;
         }else if (this.type === "izquierda"){
             this.directionX = -1;
             this.directionY = 0;
+            this.x = tanque.left - 22;
+            this.y = tanque.top + 22;
         }else if (this.type === "derecha"){
             this.directionX = 1;
             this.directionY = 0;
+            this.x = tanque.left + 60;
+            this.y = tanque.top + 22;
         }
         
 
