@@ -69,12 +69,6 @@ class Game {
     update(){
         this.tanque.move()
 
-        
-       /* //enemigos aparecen
-        if (Math.random() > 0.98 && this.enemies.length < 6) {
-            this.enemies.push(new Enemy(this.gameBoxNode));
-        }*/
-         
         //enemigos eliminados
         for (let i=0; i < this.enemies.length; i++){
             const enemy = this.enemies[i];
@@ -85,18 +79,16 @@ class Game {
                 this.enemies.splice(i, 1);
                 this.lives--;
                 i--;
-                //this.updateLivesCounter(); MIRAR
+                this.updateCounter()
             } 
             
             else if (enemy.top > this.height || enemy.top < -200 || enemy.left > this.width || enemy.left < -200){
                 enemy.elementEnemy.remove();
                 this.enemies.splice (i, 1);
                 i--;
-            }
+            } 
         }
-        
-        
-        
+        //disparos y enemigos eliminados en colision
         for (let i = 0; i < this.disparos.length; i++) {
             const disparo = this.disparos[i];
             disparo.move();
@@ -110,23 +102,25 @@ class Game {
                     this.disparos.splice(i, 1);
                     i--;
                     j--;
+                    this.addKillToCounter()
                 } 
-               // this.updateKillsCounter();
                 
-                else if (disparo.y > this.height /*|| disparo.y < -30 || disparo.x > this.width || disparo.x < -30*/){
-                    disparo.elementShoot.remove();
-                    this.disparos.splice(i, 1);
-                    i--;
-                } 
             }
         }
 
-
+        for (let i = 0; i < this.disparos.length; i++) {
+            const disparo = this.disparos[i];
+            disparo.move();
+            if (disparo.y > this.height || disparo.y < -30 || disparo.x > this.width || disparo.x < -30){
+                disparo.elementShoot.remove();
+                this.disparos.splice(i, 1);
+                i--;
+            }console.log(this.disparos.length)
+        } 
         //gameover 
         if (this.lives === 0) {
             this.endGame();
         }
-        
     }
 
 
@@ -135,29 +129,20 @@ class Game {
         const disparoObj = new Disparo(this.tanque);
         this.disparos.push(disparoObj);
         //console.log(this.disparos.length)
-       //console.log(this.tanque)
-        // let disparoObj;
-        // if (disparoObj = new Disparo(this.tanque, "arriba")){
-        //     this.disparos.push(disparoObj);
-        // } else if (disparoObj = new Disparo(this.tanque, "abajo")){;
-        //     this.disparos.push(disparoObj);
-        // }else if (disparoObj = new Disparo(this.tanque, "derecha")){;
-        //     this.disparos.push(disparoObj);
-        // }else if (disparoObj = new Disparo(this.tanque, "izquierda")){;
-        //     this.disparos.push(disparoObj);
-        // }
     }
 
-    updateKillsCounter() {
-        const killsCounterElement = document.querySelector("#kills-counter");
-        killsCounterElement.textContent = `Kills: ${this.kills}`;
-    }
-    
-    updateLivesCounter() {
-        const livesCounterElement = document.querySelector("#lives-counter");
-        livesCounterElement.textContent = `Lives: ${this.lives}`;
+    //contadores
+    updateCounter() {
+        document.querySelector("#kills-counter").textContent = this.kills;
+        document.querySelector("#lives-counter").textContent = this.lives;
     }
 
+    addKillToCounter(){
+        this.kills++;
+        this.updateCounter()
+    }
+
+    //fin juego
     endGame(){
     this.tanque.elementTank.remove();
     this.enemies.forEach( function (enemy){
@@ -167,5 +152,4 @@ class Game {
     this.gameContainerScreenNode.style.display = "none";
     this.gameoverScreenNode.style.display = "block";
    }
-    
 }

@@ -42,7 +42,7 @@ class Enemy {
         this.gamebBoxNode.appendChild(this.elementEnemy);
         
 
-        this.speed = 0.7
+        this.speed = 0.9
     }
 
     updatePosition(){

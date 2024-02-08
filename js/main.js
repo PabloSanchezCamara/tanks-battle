@@ -28,7 +28,6 @@ function handleKeyDown(event){
     const key = event.key;
     if (key === "ArrowLeft"){
         gameObj.tanque.directionX = -1;
-        // aqui cambias el SRC de la imagen
         gameObj.tanque.elementTank.src = "./images/Tank_0-left.png";
         gameObj.tanque.enfoque = "izquierda"
     }
@@ -48,7 +47,6 @@ function handleKeyDown(event){
         gameObj.tanque.enfoque = "abajo"
     }
     if (key === " "){
-        // gameObj.disparos.directionX = -1;
         gameObj.createNewShoot()
      }
 }

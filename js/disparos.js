@@ -4,10 +4,8 @@ class Disparo {
         this.x = tanque.left;
         this.y = tanque.top;
         this.speed = 4;
-        // this.directionX = 0;
-        // this.directionY = 500;
         this.w = 30;
-        this.h= 30;
+        this.h = 30;
         this.type = tanque.enfoque;
 
         if(this.type === "arriba"){
@@ -31,11 +29,10 @@ class Disparo {
         }else if(this.type === "abajo"){
             this.elementShoot.src = "./images/bullet-bottom.png";
         }else if(this.type === "derecha"){
-            this.elementShoot.src = "./images/bullet.right.png";
+            this.elementShoot.src = "./images/bullet-right.png";
         }else if(this.type === "izquierda"){
             this.elementShoot.src = "./images/bullet-left.png";
         }
-        this.elementShoot.src = "./images/bullet.png";
 
         this.elementShoot.style.position = "absolute";
         this.elementShoot.style.width = `${this.w}px`;
@@ -44,16 +41,14 @@ class Disparo {
         this.elementShoot.style.top = `${this.y}px`;
         gameBoxNode.appendChild(this.elementShoot);
     }
-
+        //metodos
     updatePosition(){
         this.elementShoot.style.left = `${this.x}px`;
         this.elementShoot.style.top = `${this.y}px`;
         }
     
     move(){
-        // this.top += this.speed;
-        //     this.updatePosition();
-
+        
         if (this.type === "arriba"){
             this.y -= this.speed;
             this.updatePosition();
@@ -67,7 +62,6 @@ class Disparo {
             this.x += this.speed;
             this.updatePosition();
         }
-        
     }
 
     didCollide(enemy) {
