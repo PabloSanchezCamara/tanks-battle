@@ -17,6 +17,8 @@ class Game {
         this.gameIsOver = false;
         this.gameIntervalId;
         this.disparos = [] //poner Arr
+        this.enemySpeed = 0.9;
+        this.enemiesSpeedIncrease = 10000;
         
 
         this.gameIntervalFreq = Math.round(1000/60)
@@ -26,12 +28,21 @@ class Game {
 
     //metodos de juego
 
+    enemySpeedIncrease(){
+         this.enemiesSpeedIncreaseId = setInterval(() => {
+                
+                this.enemySpeed += 0.2;
+                }, this.enemiesSpeedIncrease)
+                
+            }
+            
     start() {
         this.gameBoxNode.style.height = `${this.height}px`;
         this.gameBoxNode.style.width = `${this.width}px`
         this.startScreenNode.style.display = "none";
         this.gameContainerScreenNode.style.display = "flex";
         this.gameBoxNode.style.display = "block";
+        this.enemySpeedIncrease()
 
         this.gameIntervalId = setInterval(() => {
             //console.log("probando intervalo")
@@ -42,8 +53,6 @@ class Game {
     gameLoop(){
         
         this.update();
-        //console.log(this.enemies.length)
-        
 
         if(this.gameIsOver){
             clearInterval(this.gameIntervalId);
@@ -53,16 +62,16 @@ class Game {
     enemiesAppear(){
         this.enemyAppearIntervalId = setInterval(() => {
 
-        let newEnemyTop = new Enemy(this.gameBoxNode, "arriba");
+        let newEnemyTop = new Enemy(this.gameBoxNode, "arriba",this.enemySpeed);
         this.enemies.push(newEnemyTop);
 
-        let newEnemyBottom = new Enemy(this.gameBoxNode, "abajo");
+        let newEnemyBottom = new Enemy(this.gameBoxNode, "abajo",this.enemySpeed);
         this.enemies.push(newEnemyBottom);
 
-        let newEnemyLeft = new Enemy(this.gameBoxNode, "izquierda");
+        let newEnemyLeft = new Enemy(this.gameBoxNode, "izquierda",this.enemySpeed);
         this.enemies.push(newEnemyLeft);
 
-        let newEnemyRight = new Enemy(this.gameBoxNode, "derecha");
+        let newEnemyRight = new Enemy(this.gameBoxNode, "derecha",this.enemySpeed);
         this.enemies.push(newEnemyRight);
         }, this.enemiesAppearFreq);
     }
@@ -115,8 +124,9 @@ class Game {
                 disparo.elementShoot.remove();
                 this.disparos.splice(i, 1);
                 i--;
-            }console.log(this.disparos.length)
+            }
         } 
+        
         //gameover 
         if (this.lives === 0) {
             this.endGame();
@@ -128,7 +138,6 @@ class Game {
     createNewShoot (){
         const disparoObj = new Disparo(this.tanque);
         this.disparos.push(disparoObj);
-        //console.log(this.disparos.length)
     }
 
     //contadores
@@ -150,6 +159,10 @@ class Game {
     })
     this.gameIsOver = true;
     this.gameContainerScreenNode.style.display = "none";
-    this.gameoverScreenNode.style.display = "block";
+    this.gameoverScreenNode.style.display = "flex";
+
+    const killsGameOverScreen = document.querySelector("#final-score");
+    killsGameOverScreen.textContent = `Has conseguido ${this.kills} kills!`;
+    this.gameoverScreenNode.appendChild(killsGameOverScreen)
    }
 }

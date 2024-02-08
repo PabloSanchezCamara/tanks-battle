@@ -1,6 +1,6 @@
 class Enemy {
 
-    constructor (gamebBoxNode, type) {
+    constructor (gamebBoxNode, type, speed) {
         
         this.gamebBoxNode = gamebBoxNode;
         this.type = type
@@ -42,7 +42,7 @@ class Enemy {
         this.gamebBoxNode.appendChild(this.elementEnemy);
         
 
-        this.speed = 0.9
+        this.speed = speed
     }
 
     updatePosition(){
@@ -65,5 +65,9 @@ class Enemy {
             this.updatePosition();
         }
     }
+
+    // updateSpeed(newSpeed){
+    //     this.speed = newSpeed;
+    // }
 
 }
