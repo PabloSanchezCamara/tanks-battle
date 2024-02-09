@@ -22,7 +22,10 @@ Tank Battle es un juego en el que el jugador tiene que destruir tanques enemigos
 
 # Backlog Functionalities
 
-- List here all functionalities you wish to add to your proyect later.
+- Añadir unos nuevos bonus que te den más vida o que eliminen todos los enemigos de la pantalla.
+- Guardar las puntuaciones de cada jugador en una base de datos y mostrar los mejores resultados al acabar el juego.
+- Posible disparo aleatorio de algún enemigo cada cierto tiempo.
+- Darle algún sonido nuevo, al ser alcanzado o al destruir enemigos.
 
 # Technologies used
 
