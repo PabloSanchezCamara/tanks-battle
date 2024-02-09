@@ -1,5 +1,5 @@
 class Tanque {
-    constructor (gameBoxNode, left, top, width, height, imgSrc, speed){
+    constructor (gameBoxNode, left, top, width, height, imgSrc){
         this.gameBoxNode = gameBoxNode;
         this.left = left; //canbiar por x y
         this.top = top;
@@ -8,7 +8,7 @@ class Tanque {
         this.directionX = 0;
         this.directionY = 0;
         this.enfoque = "arriba";
-        this.speed = speed;
+        this.speed = 1.5;
         
       
 
@@ -27,8 +27,8 @@ class Tanque {
 
     move(){
         //velocidad tanque
-        this.left += this.directionX * 1.5;
-        this.top += this.directionY *1.5;
+        this.left += this.directionX * this.speed;
+        this.top += this.directionY * this.speed;
 
         //bordes por los que no se sale el tanque
         if (this.left < -15){

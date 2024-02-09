@@ -7,7 +7,7 @@ class Game {
         this.gameBoxNode = document.querySelector("#game-box");
         this.gameoverScreenNode = document.querySelector("#gameover-screen");
 
-        this.tanque = new Tanque(this.gameBoxNode, 300, 300, 75, 75, "./images/Tank_0.png", this.tanqueSpeed);
+        this.tanque = new Tanque(this.gameBoxNode, 300, 300, 75, 75, "./images/Tank_0.png");
         this.height = 600;
         this.width = 700;
         this.enemies = []; //poner Arr
@@ -20,7 +20,6 @@ class Game {
         this.enemySpeed = 0.9;
         this.enemiesSpeedTimeIncrease = 3000;
 
-        this.tanqueSpeed = 2;
         
 
         this.gameIntervalFreq = Math.round(1000/60)
@@ -147,7 +146,7 @@ class Game {
                 bonus.elementBonus.remove();
                 this.bonusArr.splice(i, 1);
                 i--;
-                this.tanqueSpeed += 0.4;
+                this.tanque.speed += 2;
 
             } 
         }
