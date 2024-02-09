@@ -30,7 +30,7 @@ class Game {
         this.disparoSound.volume = 0.05;
 
         this.bonusAppearIntervalId;
-        this.bonusAppearFreq = 3000;
+        this.bonusAppearFreq = 10000;
         this.bonusArr = [];
     }
 
@@ -146,7 +146,7 @@ class Game {
                 bonus.elementBonus.remove();
                 this.bonusArr.splice(i, 1);
                 i--;
-                this.tanque.speed += 2;
+                this.tanque.speed += 0.5;
 
             } 
         }

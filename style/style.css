@@ -61,7 +61,7 @@ body {
     height: 180px;
     box-shadow: 0 0 20px rgb(43, 73, 85);
     border-radius: 10px;
-    margin-bottom: 5vh;
+    margin-bottom: 3vh;
 }
 
 #you-lost-img {
@@ -119,7 +119,7 @@ body {
 
 #instructions-panel {
     background-color: beige;
-    height: 180px;
+    height: 195px;
     width: 340px;
     border-radius: 20px;
     opacity: 0.8;
