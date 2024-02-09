@@ -146,7 +146,7 @@ Tank Battle es un juego en el que el jugador tiene que destruir tanques enemigos
 [Link](https://excalidraw.com/#json=uFI5J_mETE3IR-71_SZUh,AXA682D03qFtHk6pHQjt1w)
 
 ### Slides
-[Link](www.your-slides-url-here.com)
+[Link](https://docs.google.com/presentation/d/103imEfCBPsuv4mpWCCyX2TT4uHb4AUJZsYCZf9P_jn4/edit#slide=id.g268b03e0ac5_0_40)
 
 ## Deploy
 [Link](https://pablosanchezcamara.github.io/tanks-battle/)
