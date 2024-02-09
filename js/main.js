@@ -17,6 +17,7 @@ function startGame (){
 
     gameObj.start();
     gameObj.enemiesAppear();
+    gameObj.bonusAppear();
 }
 
 function restartGame() {

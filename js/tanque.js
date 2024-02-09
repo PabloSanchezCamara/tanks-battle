@@ -1,5 +1,5 @@
 class Tanque {
-    constructor (gameBoxNode, left, top, width, height, imgSrc){
+    constructor (gameBoxNode, left, top, width, height, imgSrc, speed){
         this.gameBoxNode = gameBoxNode;
         this.left = left; //canbiar por x y
         this.top = top;
@@ -8,6 +8,7 @@ class Tanque {
         this.directionX = 0;
         this.directionY = 0;
         this.enfoque = "arriba";
+        this.speed = speed;
         
       
 
@@ -27,7 +28,7 @@ class Tanque {
     move(){
         //velocidad tanque
         this.left += this.directionX * 1.5;
-        this.top += this.directionY * 1.5;
+        this.top += this.directionY *1.5;
 
         //bordes por los que no se sale el tanque
         if (this.left < -15){
@@ -59,6 +60,22 @@ class Tanque {
             tanqueRect.right > enemyRect.left &&
             tanqueRect.top < enemyRect.bottom &&
             tanqueRect.bottom > enemyRect.top
+        ) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    didCollideBonus(bonus) {
+        const tanqueRect = this.elementTank.getBoundingClientRect();
+        const bonusRect = bonus.elementBonus.getBoundingClientRect();
+        
+        if (
+            tanqueRect.left < bonusRect.right &&
+            tanqueRect.right > bonusRect.left &&
+            tanqueRect.top < bonusRect.bottom &&
+            tanqueRect.bottom > bonusRect.top
         ) {
             return true;
         } else {

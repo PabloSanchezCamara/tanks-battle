@@ -7,7 +7,7 @@ class Game {
         this.gameBoxNode = document.querySelector("#game-box");
         this.gameoverScreenNode = document.querySelector("#gameover-screen");
 
-        this.tanque = new Tanque(this.gameBoxNode, 300, 300, 75, 75, "./images/Tank_0.png");
+        this.tanque = new Tanque(this.gameBoxNode, 300, 300, 75, 75, "./images/Tank_0.png", this.tanqueSpeed);
         this.height = 600;
         this.width = 700;
         this.enemies = []; //poner Arr
@@ -18,7 +18,9 @@ class Game {
         this.gameIntervalId;
         this.disparos = [] //poner Arr
         this.enemySpeed = 0.9;
-        this.enemiesSpeedTimeIncrease = 1000;
+        this.enemiesSpeedTimeIncrease = 3000;
+
+        this.tanqueSpeed = 2;
         
 
         this.gameIntervalFreq = Math.round(1000/60)
@@ -27,6 +29,10 @@ class Game {
 
         this.disparoSound = document.querySelector("#shoot-sound");
         this.disparoSound.volume = 0.05;
+
+        this.bonusAppearIntervalId;
+        this.bonusAppearFreq = 3000;
+        this.bonusArr = [];
     }
 
     //metodos de juego
@@ -34,7 +40,7 @@ class Game {
     enemySpeedIncrease(){
          this.enemiesSpeedIncreaseId = setInterval(() => {
                 
-                this.enemySpeed += 0.1;
+                this.enemySpeed += 0.2;
                 }, this.enemiesSpeedTimeIncrease);
                 
             }
@@ -61,22 +67,25 @@ class Game {
         }
     }
 
+    bonusAppear(){
+        this.bonusAppearIntervalId = setInterval(() => {
+            let newBonusObj = new Bonus(this.gameBoxNode);
+            this.bonusArr.push(newBonusObj)
+        }, this.bonusAppearFreq);
+        
+    }
+
     enemiesAppear(){
         this.enemyAppearIntervalId = setInterval(() => {
         const enemyTypes = ["arriba", "abajo", "izquierda", "derecha"];
-        let randomEnemyTypeIndex = Math.floor(Math.random()* enemyTypes.length)
+        let randomEnemyTypeIndex1 = Math.floor(Math.random()* enemyTypes.length);
+        let randomEnemyTypeIndex2 = Math.floor(Math.random()* enemyTypes.length);
 
-        let newEnemyTop = new Enemy(this.gameBoxNode, enemyTypes[randomEnemyTypeIndex],this.enemySpeed);
-        this.enemies.push(newEnemyTop);
+        let newEnemy1 = new Enemy(this.gameBoxNode, enemyTypes[randomEnemyTypeIndex1],this.enemySpeed);
+        this.enemies.push(newEnemy1);
+        let newEnemy2 = new Enemy(this.gameBoxNode, enemyTypes[randomEnemyTypeIndex2],this.enemySpeed);
+        this.enemies.push(newEnemy2);
 
-        // let newEnemyBottom = new Enemy(this.gameBoxNode, enemyTypes[1],this.enemySpeed);
-        // this.enemies.push(newEnemyBottom);
-
-        // let newEnemyLeft = new Enemy(this.gameBoxNode, enemyTypes[2],this.enemySpeed);
-        // this.enemies.push(newEnemyLeft);
-
-        // let newEnemyRight = new Enemy(this.gameBoxNode, enemyTypes[3],this.enemySpeed);
-        // this.enemies.push(newEnemyRight);
         }, this.enemiesAppearFreq);
     }
     update(){
@@ -129,7 +138,19 @@ class Game {
                 this.disparos.splice(i, 1);
                 i--;
             }
-        } 
+        }
+
+        for (let i=0; i < this.bonusArr.length; i++){
+            const bonus = this.bonusArr[i];
+
+            if(this.tanque.didCollideBonus(bonus)){
+                bonus.elementBonus.remove();
+                this.bonusArr.splice(i, 1);
+                i--;
+                this.tanqueSpeed += 0.4;
+
+            } 
+        }
         
         //gameover 
         if (this.lives === 0) {

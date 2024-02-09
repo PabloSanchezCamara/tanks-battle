@@ -70,8 +70,4 @@ class Enemy {
         }
     }
 
-    // updateSpeed(newSpeed){
-    //     this.speed = newSpeed;
-    // }
-
 }
