@@ -1,6 +1,5 @@
 class Game {
 
-    // propiedas elementos dle juego
     constructor(){
         this.startScreenNode = document.querySelector("#start-screen");
         this.gameContainerScreenNode = document.querySelector("#game-container");
@@ -10,22 +9,19 @@ class Game {
         this.tanque = new Tanque(this.gameBoxNode, 300, 300, 75, 75, "./images/Tank_0.png");
         this.height = 600;
         this.width = 700;
-        this.enemies = []; //poner Arr
-        this.enemiesAppearFreq = 1500;
         this.kills = 0;
         this.lives = 3;
         this.gameIsOver = false;
         this.gameIntervalId;
-        this.disparos = [] //poner Arr
+        this.gameIntervalFreq = Math.round(1000/60)
+        
+        this.enemies = [];
+        this.enemiesAppearFreq = 1500;
         this.enemySpeed = 0.9;
         this.enemiesSpeedTimeIncrease = 3000;
-
-        
-
-        this.gameIntervalFreq = Math.round(1000/60)
-
         this.enemyAppearIntervalId;
-
+        
+        this.disparos = []
         this.disparoSound = document.querySelector("#shoot-sound");
         this.disparoSound.volume = 0.05;
 
@@ -34,14 +30,12 @@ class Game {
         this.bonusArr = [];
     }
 
-    //metodos de juego
-
-    enemySpeedIncrease(){
+   
+    enemySpeedIncrease() {
          this.enemiesSpeedIncreaseId = setInterval(() => {
                 
                 this.enemySpeed += 0.2;
                 }, this.enemiesSpeedTimeIncrease);
-                
             }
             
     start() {
@@ -58,10 +52,9 @@ class Game {
     }
 
     gameLoop(){
-        
         this.update();
 
-        if(this.gameIsOver){
+        if (this.gameIsOver){
             clearInterval(this.gameIntervalId);
         }
     }
@@ -71,7 +64,6 @@ class Game {
             let newBonusObj = new Bonus(this.gameBoxNode);
             this.bonusArr.push(newBonusObj)
         }, this.bonusAppearFreq);
-        
     }
 
     enemiesAppear(){
@@ -87,6 +79,7 @@ class Game {
 
         }, this.enemiesAppearFreq);
     }
+
     update(){
         this.tanque.move()
 
@@ -125,7 +118,6 @@ class Game {
                     j--;
                     this.addKillToCounter()
                 } 
-                
             }
         }
 
@@ -147,7 +139,6 @@ class Game {
                 this.bonusArr.splice(i, 1);
                 i--;
                 this.tanque.speed += 0.5;
-
             } 
         }
         
@@ -173,7 +164,7 @@ class Game {
 
     addKillToCounter(){
         this.kills++;
-        this.updateCounter()
+        this.updateCounter();
     }
 
     //fin juego

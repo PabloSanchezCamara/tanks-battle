@@ -1,8 +1,9 @@
 class Bonus {
+    
     constructor(gameBoxNode){
         this.gameBoxNode = gameBoxNode
-        this.x = Math.floor(Math.random()*550);
-        this.y = Math.floor(Math.random()*650);
+        this.x = Math.floor(Math.random()*500);
+        this.y = Math.floor(Math.random()*600);
         this.w = 30;
         this.h = 30;
 

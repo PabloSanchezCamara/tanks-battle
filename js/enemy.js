@@ -45,7 +45,6 @@ class Enemy {
         this.elementEnemy.style.top = `${this.top}px`;
         this.gamebBoxNode.appendChild(this.elementEnemy);
         
-
         this.speed = speed
     }
 
@@ -69,5 +68,4 @@ class Enemy {
             this.updatePosition();
         }
     }
-
 }

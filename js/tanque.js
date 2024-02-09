@@ -1,7 +1,7 @@
 class Tanque {
     constructor (gameBoxNode, left, top, width, height, imgSrc){
         this.gameBoxNode = gameBoxNode;
-        this.left = left; //canbiar por x y
+        this.left = left;
         this.top = top;
         this.width = width;
         this.height = height;
@@ -10,8 +10,6 @@ class Tanque {
         this.enfoque = "arriba";
         this.speed = 1.5;
         
-      
-
         this.elementTank = document.querySelector("img");
         this.elementTank.src = imgSrc;
         this.elementTank.className = "";
@@ -22,7 +20,6 @@ class Tanque {
         this.elementTank.style.top = `${top}px`;
         this.elementTank.style.left = `${left}px`;
         this.gameBoxNode.appendChild(this.elementTank);
-
     }
 
     move(){

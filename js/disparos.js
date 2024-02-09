@@ -1,8 +1,6 @@
 class Disparo {
     constructor (tanque){
         
-        // this.x = tanque.left + 22;
-        // this.y = tanque.top - 8;
         this.speed = 4;
         this.w = 30;
         this.h = 30;
@@ -30,7 +28,6 @@ class Disparo {
             this.y = tanque.top + 22;
         }
         
-
         this.elementShoot = document.createElement("img");
         if (this.type === "arriba"){
             this.elementShoot.src = "./images/bullet.png";
@@ -49,7 +46,7 @@ class Disparo {
         this.elementShoot.style.top = `${this.y}px`;
         gameBoxNode.appendChild(this.elementShoot);
     }
-        //metodos
+
     updatePosition(){
         this.elementShoot.style.left = `${this.x}px`;
         this.elementShoot.style.top = `${this.y}px`;

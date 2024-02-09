@@ -1,4 +1,3 @@
-
 const startScreenNode = document.querySelector("#start-screen");
 const gameContainerScreenNode = document.querySelector("#game-container");
 const gameBoxNode = document.querySelector("#game-box");
@@ -11,7 +10,6 @@ mainThemeAudioNode.volume = 0.05;
 let gameObj;
 
 //State functions
-
 function startGame (){
     gameObj = new Game;
 
@@ -24,8 +22,8 @@ function restartGame() {
     location.reload();
   }
 
+//eventos teclas
 function handleKeyDown(event){
-    //console.log("Tecla presionada:", event.key)
     const key = event.key;
     if (key === "ArrowLeft"){
         gameObj.tanque.directionX = -1;
@@ -61,27 +59,24 @@ function handleKeyUp(event){
     if (key === "ArrowUp" || key === "ArrowDown"){
         gameObj.tanque.directionY = 0;
     }
-    
 }
 window.addEventListener("keyup", handleKeyUp);
-
-
 
 startBtnNode.addEventListener("click", startGame);
 
 restartBtnNode.addEventListener("click", function () {
-   
-    restartGame();
+   restartGame();
 });
+
+//reproductor musica
 const musicTheme = document.querySelector("#main-theme") ;
 
 const pauseMusic = document.querySelector("#pause-button");
 pauseMusic.addEventListener('click', () => {
     musicTheme.pause();
 });
+
 const playMusic = document.querySelector("#play-button");
 playMusic.addEventListener('click', () => {
     musicTheme.play();
 });
-
-
