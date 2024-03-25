@@ -1,4 +1,4 @@
-# NAME OF YOUR PROYECT
+# TANK BATTLE
 
 ## [Play the Game!](https://pablosanchezcamara.github.io/tanks-battle/)
 
